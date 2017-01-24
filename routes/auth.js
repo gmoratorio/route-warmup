@@ -58,6 +58,7 @@ router.post("/login", (req, res, next) => {
                         .then((user) => {
                             const samePW = functions.comparePW(password, user.password)
                             if (samePW) {
+                              delete user.password;
                                 res.json(user)
                             } else {
                                 res.status(500);
