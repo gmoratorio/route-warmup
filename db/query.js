@@ -19,7 +19,7 @@ module.exports = {
     getUserByEmail: function getUserByEmail(email){
       return knex("user")
       .select()
-      .where('email', 'like', `%${email}%`)
+      .where('email', email)
       .first()
     }
 
