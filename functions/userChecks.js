@@ -29,7 +29,7 @@ module.exports = {
         const samePW = bcrypt.compareSync(enteredPW, hashedPW);
         return samePW;
     },
-    
+
 
 
 }

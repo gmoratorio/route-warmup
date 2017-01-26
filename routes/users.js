@@ -16,9 +16,15 @@ router.get("/:id", (req, res, next) => {
     let user = null;
     query.getUserByID(req.params.id)
         .then((returnedUser) => {
+          if(returnedUser){
             res.json(returnedUser);
+          }else{
+            res.json({message: "User not found"});
+
+          }
         })
 })
+
 
 
 
