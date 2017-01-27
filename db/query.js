@@ -48,6 +48,12 @@ module.exports = {
             .then(() => {
                 return id;
             })
+    },
+    getDejauserByID: function getDejauserByID(id) {
+        return knex('dejauser')
+            .select()
+            .where('id', id)
+            .first()
     }
 
 }

@@ -3,32 +3,6 @@ var router = express.Router();
 const query = require("../db/query");
 const functions = require("../functions/userChecks");
 
-/**
-@api {get} /equipment GET all Equipment route
-@apiSuccessExample {json} Success-Response:
-  HTTP/1.1 200 OK
-  [{
-      "id": 1,
-      "user_id": 1,
-      "name": "Burton Snowboard",
-      "description": "Guillermo's old board... got quite a few scratches!"
-  }, {
-      "id": 3,
-      "user_id": 1,
-      "name": "Burton Boots",
-      "description": "Guillermo's old boots. Time for a new pair for sure."
-  }]
-
-@apiErrorExample {json} Error-Response:
-1) ID is not an integer
-  {
-  "message": "Please enter a valid ID"
-  }
-2) ID is valid, but there is not entry with that ID
-  {
-  "message": "Equipment not found"
-  }
-*/
 
 router.get('/', function(req, res, next) {
     query.getAllEquipment()
@@ -40,13 +14,13 @@ router.get('/', function(req, res, next) {
 router.get("/:id", (req, res, next) => {
     const id = req.params.id;
     if (idIsValid(id)) {
-        query.getEquipmentByID(id)
-            .then((returnedEquipment) => {
-                if (returnedEquipment) {
-                    res.json(returnedEquipment);
+        query.getDejauserByID(id)
+            .then((returnedDejauser) => {
+                if (returnedDejauser) {
+                    res.json(returnedDejauser);
                 } else {
                     res.json({
-                        message: "Equipment not found"
+                        message: "User not found"
                     })
 
                 }
